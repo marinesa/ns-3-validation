@@ -605,37 +605,21 @@ main (int argc, char *argv[])
                 {
                   if (epcDl)
                     {
-                	  ApplicationContainer clientApps;
-                	  ApplicationContainer serverApps;
                       NS_LOG_LOGIC ("installing UDP DL app for UE " << u);
-                      //std::cout<<"Using UDP for EPC DL\n";
-                      //UdpClientHelper dlClientHelper (ueIpIfaces.GetAddress (u), dlPort);
-                      BulkSendHelper clientHelper("ns3::UdpSocketFactory", InetSocketAddress( ueIpIfaces.GetAddress (u), dlPort));
-
-                      clientHelper.SetAttribute("OffTime", StringValue("ns3::ConstantRandomVariable[Constant=1]") );
-                      clientHelper.SetAttribute("OnTime", StringValue("ns3::ConstantRandomVariable[Constant=1]") );
-                      clientHelper.SetAttribute("DataRate", DataRateValue (DataRate ("16Mb/s") ));
-                     // clientHelper.SetAttribute("PacketSize", UintegerValue (2000000) );
-                      clientApps.Add (clientHelper.Install (remoteHost));
-                      //clientApps[u].Start(staTime->GetValue(5,0));
+                      UdpClientHelper dlClientHelper (ueIpIfaces.GetAddress (u), dlPort);
+                      clientApps.Add (dlClientHelper.Install (remoteHost));
                       PacketSinkHelper dlPacketSinkHelper ("ns3::UdpSocketFactory",
                                                            InetSocketAddress (Ipv4Address::GetAny (), dlPort));
                       serverApps.Add (dlPacketSinkHelper.Install (ue));
-                      Time startTime = Seconds (startTimeSeconds->GetValue ());
-                      serverApps.Start (startTime);
                     }
                   if (epcUl)
                     {
-                	  ApplicationContainer clientApps;
-                	  ApplicationContainer serverApps;
                       NS_LOG_LOGIC ("installing UDP UL app for UE " << u);
                       UdpClientHelper ulClientHelper (remoteHostAddr, ulPort);
                       clientApps.Add (ulClientHelper.Install (ue));
                       PacketSinkHelper ulPacketSinkHelper ("ns3::UdpSocketFactory",
                                                            InetSocketAddress (Ipv4Address::GetAny (), ulPort));
                       serverApps.Add (ulPacketSinkHelper.Install (remoteHost));
-                      Time startTime = Seconds (startTimeSeconds->GetValue ());
-                      serverApps.Start (startTime);
                     }
                 }
               //Andrei - we need to use the following case as FTP requires TCP, not UDP
