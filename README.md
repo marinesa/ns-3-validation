@@ -10,7 +10,7 @@ Each case folder already contains simulations output files in subfolders, togeth
 
 For example, to compute statistics for Case 1 with bursty traffic, from corresponding folder, i.e. "\case 1\30 runs bursty traffic\", you can run the script contained within, "compute_ue_sinr_results_average_bursty.m", which will plot the throughput CDF and compute 3GPP 36.814 required statistics. All the matlab computation scripts start with the "compute_ue" string, and the other "\*.m" scripts are used by it.
 
-In case 1 with full buffer traffic, users' SINR CDF will also also plotted.
+Additionally, in case 1 with full buffer traffic, users' SINR CDF will also be plotted.
 
 ## 2. Running ns-3 simulations in linux
 
