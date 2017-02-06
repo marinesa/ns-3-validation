@@ -770,7 +770,7 @@ main (int argc, char *argv[])
   if (epc)
     {
     //  lteHelper->EnablePdcpTraces ();
-	 // lteHelper->EnablePhyTraces ();
+		lteHelper->EnablePhyTraces ();
 
     }
 
