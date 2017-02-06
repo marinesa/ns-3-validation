@@ -600,6 +600,10 @@ main (int argc, char *argv[])
             {
               ++dlPort;
               ++ulPort;
+			  
+			  ApplicationContainer clientApps;
+              ApplicationContainer serverApps;
+
 
               if (useUdp)
                 {
@@ -644,8 +648,6 @@ main (int argc, char *argv[])
                       //This done since NS3 does not allow same application to send several files at different times
                       while(beginTime<=simTime)
                       {
-                    	  ApplicationContainer clientApps;
-                    	  ApplicationContainer serverApps;
 
                     	  //Application for sending 2 MB files, with 0.2 arrival rate
                     	  BulkSendHelper dlClientHelper ("ns3::TcpSocketFactory",
@@ -669,8 +671,6 @@ main (int argc, char *argv[])
                     }
                   if (epcUl)
                     {
-                	  ApplicationContainer clientApps;
-                	  ApplicationContainer serverApps;
                       NS_LOG_LOGIC ("installing TCP UL app for UE " << u);
                       BulkSendHelper ulClientHelper ("ns3::TcpSocketFactory",
                                                      InetSocketAddress (remoteHostAddr, ulPort));
