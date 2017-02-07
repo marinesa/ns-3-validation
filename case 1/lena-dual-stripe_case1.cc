@@ -705,6 +705,13 @@ main (int argc, char *argv[])
                   EpsBearer bearer (EpsBearer::NGBR_VIDEO_TCP_DEFAULT);
                   lteHelper->ActivateDedicatedEpsBearer (ueDevs.Get (u), bearer, tft);
                 }
+				
+			  if (epcDl && useUdp)
+			  {
+				  Time startTime = Seconds (startTimeSeconds->GetValue ());
+				  serverApps.Start (startTime);
+				  clientApps.Start (startTime);
+			  }
 
               ofs.close();
 
@@ -770,7 +777,7 @@ main (int argc, char *argv[])
   if (epc)
     {
     //  lteHelper->EnablePdcpTraces ();
-		lteHelper->EnablePhyTraces ();
+        lteHelper->EnablePhyTraces ();
 
     }
 
@@ -790,3 +797,4 @@ main (int argc, char *argv[])
 
   return 0;
 }
+
