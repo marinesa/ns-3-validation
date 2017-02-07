@@ -16,15 +16,24 @@ Additionally, in case 1 with full buffer traffic, users' SINR CDF will also be p
 
 Simulation files can also be generated from scratch assuming ns-3 is already installed in Linux, after it was built with the waf command and examples enabled:
 
-./waf configure --build-profile=optimized --enable-example
+```
+./waf configure --build-profile=optimized --enable-examples
+```
 
 Note that optimized build is used as well, to speed up simulations.
 
 In each case folder, there are matlab scripts that will trigger simulations with multiple instances of ns-3. Current implementation assumes 5 ns-3 instances (5 threads), but this can be modified depending on the specifications of the computer it runs on (or, in case matlab is not installed, can be adapted to shell scripts as the script's code is very basic). The scripts pass scenario-specific arguments to the ns-3 lena-dual-stripe.cc file for 3GPP simulations. These scripts need to be placed in the root folder of the ns-3 simulator.
 
 First, to run the simulation for a case, the lena-dual-stripe.cc file content in ns-3 needs to be replaced with content from intended case (e.g., for Case 1, lena_dual_stripe_case1.cc), while keeping the original filename, lena-dual-stripe.cc. 
-
-Secondly, when running a simulation, the specific traffic type needs to be decided beforehand (full buffer or bursty), and the corresponding script selected (e.g., ns3_samples_run_case1_full_buffer.m or ns3_samples_run_case1_bursty.m). A script will generate 30 different simulations/runs (30 independent UE placements), and will output traffic files (e.g., run_17_DlRlcStats.txt). When a full buffer script is used, this will also generate SINR statistics files (e.g., run_17_DlRsrpSinrStats.txt).
+Assuming file (lena-dual-dual-stripe_case1.cc) was copied in ns-3 root:
+```
+cat lena-dual-dual-stripe_case1.cc > ./src/lte/examples/lena-dual-stripe.cc
+```
+Secondly, when running a simulation, the specific traffic type needs to be decided beforehand (full buffer or bursty), and the corresponding script selected (e.g., ns3_samples_run_case1_full_buffer.m or ns3_samples_run_case1_bursty.m). This also assumes that the ns3_samples_run\* files have been copied in ns-3 root, and matlab is installed:
+```
+sudo matlab -r ns3_samples_run_case1_full_buffer 
+```
+The script will generate 30 different simulations/runs (30 independent UE placements), and will output traffic files (e.g., run_17_DlRlcStats.txt). When a full buffer script is used, this will also generate SINR statistics files (e.g., run_17_DlRsrpSinrStats.txt).
 
 Afterwards, the resulting data can be evaluated as described in Section 1.
 
