@@ -17,7 +17,7 @@ Additionally, in case 1 with full buffer traffic, users' SINR CDF will also be p
 Simulation files can also be generated from scratch assuming ns-3 is already installed in Linux, after it was built with the waf command and examples enabled:
 
 ```
-./waf configure --build-profile=optimized --enable-example
+./waf configure --build-profile=optimized --enable-examples
 ```
 
 Note that optimized build is used as well, to speed up simulations.
