@@ -18,9 +18,10 @@ Simulation files can also be generated from scratch assuming ns-3 is already ins
 
 ```
 ./waf configure --build-profile=optimized --enable-examples
+sudo ./waf
 ```
 
-Note that optimized build is used as well, to speed up simulations.
+Note that optimized build is used as well, to speed up simulations. When compiling waf, this needs sudo for some of the examples.
 
 In each case folder, there are matlab scripts that will trigger simulations with multiple instances of ns-3. Current implementation assumes 5 ns-3 instances (5 threads), but this can be modified depending on the specifications of the computer it runs on (or, in case matlab is not installed, can be adapted to shell scripts as the script's code is very basic). The scripts pass scenario-specific arguments to the ns-3 lena-dual-stripe.cc file for 3GPP simulations. These scripts need to be placed in the root folder of the ns-3 simulator.
 
