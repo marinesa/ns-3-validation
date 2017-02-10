@@ -1,6 +1,6 @@
 # ns-3-validation
 
-This repository contains files used for 3GPP validation of the ns-3 LTE module.
+This repository contains files used for 3GPP validation of the ns-3 LTE module. It is based on ns-3.25.
 
 Case 1 and Case 3 folders each contain their own modified version of lena-dual-stripe.cc (i.e., lena_dual_stripe_case1.cc, lena_dual_stripe_case3.cc). 
 
