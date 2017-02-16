@@ -30,14 +30,20 @@ Assuming file (lena-dual-dual-stripe_case1.cc) was copied in ns-3 root:
 ```
 cat lena-dual-dual-stripe_case1.cc > ./src/lte/examples/lena-dual-stripe.cc
 ```
-Secondly, when running a simulation, the specific traffic type needs to be decided beforehand (full buffer or bursty), and the corresponding script selected (e.g., ns3_samples_run_case1_full_buffer.m or ns3_samples_run_case1_bursty.m). This also assumes that the ns3_samples_run\* files have been copied in ns-3 root, and matlab is installed:
+Secondly, when running a simulation, the specific traffic type needs to be decided beforehand (full buffer or bursty), and the corresponding script selected (e.g., ns3_samples_run_case1_full_buffer.m or ns3_samples_run_case1_bursty.m when using Matlab, or ns3_samples_run_case1_full_buffer.py or ns3_samples_run_case1_bursty.py when using Python). This also assumes that the ns3_samples_run\* files have been copied in ns-3 root.
+
+There are scripts for running multiprocess simulations either from Matlab or Python - these are equivalent, and can be run as shown below.
+
+### Running ns-3 multiprocess simulations with Matlab
 ```
 sudo matlab -r ns3_samples_run_case1_full_buffer 
 ```
-The script will generate 30 different simulations/runs (30 independent UE placements), and will output traffic files (e.g., run_17_DlRlcStats.txt). When a full buffer script is used, this will also generate SINR statistics files (e.g., run_17_DlRsrpSinrStats.txt).
+
+###  Running ns-3 multiprocess simulations with Python
+```
+sudo python ns3_samples_run_case1_full_buffer.py
+```
+
+A script will generate 30 different simulations/runs (30 independent UE placements), and will output traffic files (e.g., run_17_DlRlcStats.txt). When a full buffer script is used, this will also generate SINR statistics files (e.g., run_17_DlRsrpSinrStats.txt).
 
 Afterwards, the resulting data can be evaluated as described in Section 1.
-
-
-
-
