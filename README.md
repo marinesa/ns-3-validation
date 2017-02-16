@@ -34,12 +34,12 @@ Secondly, when running a simulation, the specific traffic type needs to be decid
 
 There are scripts for running multiprocess simulations either from Matlab or Python - these are equivalent, and can be run as shown below.
 
-### Running ns-3 multiprocess simulations with Matlab
+### Matlab
 ```
 sudo matlab -r ns3_samples_run_case1_full_buffer 
 ```
 
-###  Running ns-3 multiprocess simulations with Python
+### Python
 ```
 sudo python ns3_samples_run_case1_full_buffer.py
 ```
